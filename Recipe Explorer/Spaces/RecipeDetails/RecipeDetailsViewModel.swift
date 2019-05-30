@@ -25,11 +25,11 @@ final class RecipeDetailsViewModel {
     
     // - MARK: Public properties
     
-    var title: String {
+    var title: String? {
         return recipe.title
     }
     
-    var description: String {
+    var description: String? {
         return recipe.description
     }
     
@@ -42,12 +42,7 @@ final class RecipeDetailsViewModel {
     }
     
     var imageUrl: URL? {        
-        guard
-            let imageUrlString = recipe.imageUrl,
-            let url = URL(string: imageUrlString) else {
-                return nil
-        }
-        return url
+        return recipe.imageURL
     }
     
 }
