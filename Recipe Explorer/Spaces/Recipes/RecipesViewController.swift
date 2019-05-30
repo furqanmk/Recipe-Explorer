@@ -30,7 +30,7 @@ class RecipesViewController: UITableViewController {
         viewModel.viewDidLoad()
         
         // Set the title on the navigation bar
-        title = "Tempelhof Recipes"
+        title = "Recipe Explorer"
         // Register RecipeCell nib on the tableView
         tableView.register(UINib(nibName: RecipeCell.className, bundle: nil),
                            forCellReuseIdentifier: RecipeCell.className)
@@ -67,6 +67,18 @@ class RecipesViewController: UITableViewController {
         }
     }
     
+    // MARK: - Helpers
+    
+    private func showAlert(error: Error) {
+        let alertController = UIAlertController(title: nil,
+                                                message: error.localizedDescription,
+                                                preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
+    }
 }
 
 extension RecipesViewController: RecipesViewUIDelegate {
@@ -83,8 +95,7 @@ extension RecipesViewController: RecipesViewUIDelegate {
             tableView.reloadData()
             tableView.tableFooterView = nil
         case .failed(let error):
-            present(UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert),
-                    animated: true)
+            showAlert(error: error)
             tableView.tableFooterView = nil
         }
     }

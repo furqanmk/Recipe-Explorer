@@ -12,7 +12,6 @@ import SDWebImage
 class RecipeDetailsViewController: UIViewController {
     
     @IBOutlet private weak var recipeImageView: UIImageView!
-    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var chefNameLabel: UILabel!
     @IBOutlet private weak var tagsLabel: UILabel!
@@ -34,14 +33,12 @@ class RecipeDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Recipe Details"
         setupUI()
     }
 
     /// Assigns values to UI elements from the view model.
     private func setupUI() {
-        titleLabel.text = viewModel.title
+        title = viewModel.title
         descriptionLabel.text = viewModel.description
         chefNameLabel.text = viewModel.chefName
         tagsLabel.text = viewModel.tags.joined(separator: ", ")
