@@ -8,6 +8,6 @@ target 'Recipe Explorer' do
   # Pods for Recipe Explorer
   pod 'Contentful'
   pod 'SDWebImage'
-  pod 'Down'
+  pod 'Down', '~> 0.8.1'
 
 end

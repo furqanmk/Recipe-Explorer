@@ -2,14 +2,14 @@ PODS:
   - Contentful (4.2.4):
     - Contentful/ImageOptions (= 4.2.4)
   - Contentful/ImageOptions (4.2.4)
-  - Down (0.8.0)
+  - Down (0.8.3)
   - SDWebImage (5.0.2):
     - SDWebImage/Core (= 5.0.2)
   - SDWebImage/Core (5.0.2)
 
 DEPENDENCIES:
   - Contentful
-  - Down
+  - Down (~> 0.8.1)
   - SDWebImage
 
 SPEC REPOS:
@@ -20,9 +20,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Contentful: 1cd45133c7ff270439e6cc806ca0100f57242b83
-  Down: 88457e59aefb2031dcd7f643c476d6f9ca83f660
+  Down: 58ee4aa8941dcd959a8ef2eb64394967ee3fa836
   SDWebImage: 6764b5fa0f73c203728052955dbefa2bf1f33282
 
-PODFILE CHECKSUM: da95bb284610764868dc1ad60b274ace42851c5d
+PODFILE CHECKSUM: 7b556d579ae5d44705ad0e912112aa2fd6aa4fd9
 
 COCOAPODS: 1.6.1
