@@ -7,11 +7,47 @@
 //
 
 import Foundation
+import Contentful
 
-struct Recipe: Decodable {
-    let title: String
-    let description: String
-    let tags: [String]
-    let imageUrl: String?
-    let chefName: String?
+struct Recipe {
+    
+    let entry: Entry
+    
+    init(with entry: Entry) {
+        self.entry = entry
+    }
+    
+    var title: String? {
+        return entry.fields["title"] as? String
+    }
+    
+    var description: String? {
+        return entry.fields["description"] as? String
+    }
+    
+    var calories: Int? {
+        return entry.fields["calories"] as? Int
+    }
+    
+    var tags: [String] {
+        guard let tags = entry.fields.linkedEntries(at: "tags") else {
+            return []
+        }
+        return tags.compactMap { $0.fields["name"] as? String }
+    }
+
+    var chefName: String? {
+        guard let chef = entry.fields.linkedEntry(at: "chef") else {
+            return nil
+        }
+        return chef.fields["name"] as? String
+    }
+
+    var imageURL: URL? {
+        guard let image = entry.fields.linkedAsset(at: "photo") else {
+            return nil
+        }
+        return image.url
+    }
+
 }

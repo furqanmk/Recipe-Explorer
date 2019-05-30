@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Contentful
 
 enum FetchError: Error {
     case invalidUrl
@@ -14,83 +15,39 @@ enum FetchError: Error {
     case parsingFailed
 }
 
-enum RequestPage {
-    case first
-    case next
-}
-
 final class RecipeDataProvider {
     
-    enum Result {
+    enum RecipeResult {
         case sucess([Recipe])
         case failure(Error)
     }
     
-    private static let scheme = "https"
-    private static let host = "getyourguide.com"
-    private static let pathComponents = ["/",
-                                         "berlin-l17",
-                                         "tempelhof-2-hour-airport-history-tour-berlin-airlift-more-t23776",
-                                         "reviews.json"]
-    private static let itemsPerFetch = 10
-    private static var currentPage = 0
-    private static var isFetching = false
+    private static let spaceId = "kk2bw5ojx476"
+    private static let environmentId = "master"
+    private static let contentType = "recipe"
+    private static let accessToken = "7ac531648a1b5e1dab6c18b0979f822a5aad0fe5f1109829b8a197eb2be4b84c"
     
     /// Requests reviews.
     ///
     /// - Parameter onComplete: call back with a list of reviews.
-    static func fetchRecipes(for page: RequestPage, onComplete: @escaping (Result)->Void) {
+    static func fetchRecipes(onComplete: @escaping (RecipeResult)->Void) {
+
+        // Retain the client as a property on a type you define so that
+        // the client's asynchronous network callbacks are executed.
+        let client = Client(spaceId: spaceId,
+                            environmentId: environmentId,
+                            accessToken: accessToken)
         
-        guard !isFetching else {
-            return
-        }
-        isFetching = true
+        let query = Query.where(contentTypeId: contentType)
         
-        switch page {
-        case .first:
-            currentPage = 0
-        case .next:
-            currentPage += 1
-        }
-        
-        // Construct the url
-        var urlComponents = URLComponents()
-        urlComponents.scheme = scheme
-        urlComponents.host = host
-        urlComponents.path = pathComponents.joined(separator: "/")
-        urlComponents.queryItems = [
-            URLQueryItem(name: "page", value: "\(currentPage)"),
-            URLQueryItem(name: "count", value: "\(itemsPerFetch)")
-        ]
-        guard let url = urlComponents.url else {
-            onComplete(.failure(FetchError.invalidUrl))
-            return
-        }
-        
-        let request = URLRequest(url: url)
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            // Complete with generic error from response.
-            if let error = error {
+        client.fetchArray(of: Entry.self, matching: query) { (result: Result<ArrayResponse<Entry>>) in
+            switch result {
+            case .success(let arrayResponse):
+                let entries = arrayResponse.items
+                onComplete(.sucess(entries.map(Recipe.init)))
+            case .error(let error):
                 onComplete(.failure(error))
-                return
             }
-            
-            // Complete with error on data-less response.
-            guard let data = data else {
-                onComplete(.failure(FetchError.noData))
-                return
-            }
-            
-            let decoder = JSONDecoder()
-            // Attempt decoding response.
-            guard let recipesContent = try? decoder.decode(RecipesContent.self, from: data) else {
-                onComplete(.failure(FetchError.parsingFailed))
-                return
-            }
-            
-            // Complete with successful parsing of data.
-            onComplete(.sucess(recipesContent.data))
-            isFetching = false
-        }.resume()
+        }
     }
 }
