@@ -25,13 +25,7 @@ class RecipeCell: UITableViewCell {
     /// - Parameter recipe: Instance of `Recipe` object.
     func setup(with recipe: Recipe) {
         titleLabel.text = recipe.title
-        recipeImageView.image = #imageLiteral(resourceName: "food_placeholder")
-        if
-            let imageUrlString = recipe.imageUrl,
-            let imageUrl = URL(string: imageUrlString) {
-                recipeImageView.sd_setImage(with: imageUrl)
-        }
-        
+        recipeImageView.sd_setImage(with: recipe.imageURL, placeholderImage: #imageLiteral(resourceName: "food_placeholder"))
     }
     
     /// Makes the shape of the profile image view circular.
