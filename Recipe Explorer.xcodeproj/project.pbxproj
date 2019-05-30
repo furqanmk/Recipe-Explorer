@@ -24,6 +24,7 @@
 		D1B3C806229FFC0000728595 /* RecipeDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D1B3C803229FFC0000728595 /* RecipeDetailsViewController.xib */; };
 		D1E01F6722A00A8500CD04E6 /* ReviewsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E01F6622A00A8500CD04E6 /* ReviewsDataProvider.swift */; };
 		D1E01F6C22A00EF600CD04E6 /* NSObject+className.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E01F6B22A00EF600CD04E6 /* NSObject+className.swift */; };
+		D1E01F6F22A0374C00CD04E6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E01F6E22A0374C00CD04E6 /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		D1B3C803229FFC0000728595 /* RecipeDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipeDetailsViewController.xib; sourceTree = "<group>"; };
 		D1E01F6622A00A8500CD04E6 /* ReviewsDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsDataProvider.swift; sourceTree = "<group>"; };
 		D1E01F6B22A00EF600CD04E6 /* NSObject+className.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+className.swift"; sourceTree = "<group>"; };
+		D1E01F6D22A0365D00CD04E6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		D1E01F6E22A0374C00CD04E6 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +119,11 @@
 				D1B3C7ED229FF71500728595 /* Spaces */,
 				D1E01F6A22A00EDA00CD04E6 /* Extensions */,
 				D1B3C7CD229FF6D600728595 /* AppDelegate.swift */,
+				D1E01F6E22A0374C00CD04E6 /* Configuration.swift */,
 				D1B3C7D4229FF6D800728595 /* Assets.xcassets */,
 				D1B3C7D6229FF6D800728595 /* LaunchScreen.storyboard */,
 				D1B3C7D9229FF6D800728595 /* Info.plist */,
+				D1E01F6D22A0365D00CD04E6 /* Config.xcconfig */,
 			);
 			path = "Recipe Explorer";
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 				D1B3C7F2229FF78F00728595 /* RecipesCoordinator.swift in Sources */,
 				D1B3C7F9229FFBC200728595 /* RecipesViewModel.swift in Sources */,
 				D1B3C7CE229FF6D600728595 /* AppDelegate.swift in Sources */,
+				D1E01F6F22A0374C00CD04E6 /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,6 +405,7 @@
 /* Begin XCBuildConfiguration section */
 		D1B3C7E5229FF6D800728595 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1E01F6D22A0365D00CD04E6 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -460,6 +467,7 @@
 		};
 		D1B3C7E6229FF6D800728595 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1E01F6D22A0365D00CD04E6 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

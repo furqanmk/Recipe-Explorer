@@ -22,22 +22,15 @@ final class RecipeDataProvider {
         case failure(Error)
     }
     
-    private static let spaceId = "kk2bw5ojx476"
-    private static let environmentId = "master"
-    private static let contentType = "recipe"
-    private static let accessToken = "7ac531648a1b5e1dab6c18b0979f822a5aad0fe5f1109829b8a197eb2be4b84c"
-    
-    /// Requests reviews.
+    /// Requests recipes.
     ///
     /// - Parameter onComplete: call back with a list of reviews.
     static func fetchRecipes(onComplete: @escaping (RecipeResult)->Void) {
 
-        // Retain the client as a property on a type you define so that
-        // the client's asynchronous network callbacks are executed.
-        let client = Client(spaceId: spaceId,
-                            environmentId: environmentId,
-                            accessToken: accessToken)
-        
+        let contentType = "recipe"
+        let client = Client(spaceId: Configuration.contentfulSpaceId(),
+                            environmentId: Configuration.contentfulEnvironmentId(),
+                            accessToken: Configuration.contentfulAccessToken())
         let query = Query.where(contentTypeId: contentType)
         
         client.fetchArray(of: Entry.self, matching: query) { (result: Result<ArrayResponse<Entry>>) in
