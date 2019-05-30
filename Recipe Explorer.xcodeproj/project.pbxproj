@@ -11,7 +11,6 @@
 		D1B3C7CE229FF6D600728595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B3C7CD229FF6D600728595 /* AppDelegate.swift */; };
 		D1B3C7D5229FF6D800728595 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1B3C7D4229FF6D800728595 /* Assets.xcassets */; };
 		D1B3C7D8229FF6D800728595 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1B3C7D6229FF6D800728595 /* LaunchScreen.storyboard */; };
-		D1B3C7E3229FF6D800728595 /* Recipe_ExplorerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B3C7E2229FF6D800728595 /* Recipe_ExplorerTests.swift */; };
 		D1B3C7F2229FF78F00728595 /* RecipesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B3C7F1229FF78F00728595 /* RecipesCoordinator.swift */; };
 		D1B3C7F4229FFB2300728595 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B3C7F3229FFB2300728595 /* Recipe.swift */; };
 		D1B3C7F9229FFBC200728595 /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1B3C7F6229FFBC200728595 /* RecipesViewModel.swift */; };
@@ -25,6 +24,8 @@
 		D1E01F6722A00A8500CD04E6 /* ReviewsDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E01F6622A00A8500CD04E6 /* ReviewsDataProvider.swift */; };
 		D1E01F6C22A00EF600CD04E6 /* NSObject+className.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E01F6B22A00EF600CD04E6 /* NSObject+className.swift */; };
 		D1E01F6F22A0374C00CD04E6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E01F6E22A0374C00CD04E6 /* Configuration.swift */; };
+		D1E01F7122A051AE00CD04E6 /* RecipesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E01F7022A051AE00CD04E6 /* RecipesViewModelTests.swift */; };
+		D1E01F7522A080C700CD04E6 /* Pods_Recipe_Explorer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7FD811A24FA1C4A9E2C361 /* Pods_Recipe_Explorer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +48,6 @@
 		D1B3C7D7229FF6D800728595 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1B3C7D9229FF6D800728595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1B3C7DE229FF6D800728595 /* Recipe ExplorerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Recipe ExplorerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1B3C7E2229FF6D800728595 /* Recipe_ExplorerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe_ExplorerTests.swift; sourceTree = "<group>"; };
 		D1B3C7E4229FF6D800728595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1B3C7F1229FF78F00728595 /* RecipesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesCoordinator.swift; sourceTree = "<group>"; };
 		D1B3C7F3229FFB2300728595 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
@@ -63,6 +63,7 @@
 		D1E01F6B22A00EF600CD04E6 /* NSObject+className.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+className.swift"; sourceTree = "<group>"; };
 		D1E01F6D22A0365D00CD04E6 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		D1E01F6E22A0374C00CD04E6 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		D1E01F7022A051AE00CD04E6 /* RecipesViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E01F7522A080C700CD04E6 /* Pods_Recipe_Explorer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,8 +133,8 @@
 		D1B3C7E1229FF6D800728595 /* Recipe ExplorerTests */ = {
 			isa = PBXGroup;
 			children = (
-				D1B3C7E2229FF6D800728595 /* Recipe_ExplorerTests.swift */,
 				D1B3C7E4229FF6D800728595 /* Info.plist */,
+				D1E01F7022A051AE00CD04E6 /* RecipesViewModelTests.swift */,
 			);
 			path = "Recipe ExplorerTests";
 			sourceTree = "<group>";
@@ -377,7 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1B3C7E3229FF6D800728595 /* Recipe_ExplorerTests.swift in Sources */,
+				D1E01F7122A051AE00CD04E6 /* RecipesViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +563,7 @@
 		};
 		D1B3C7EB229FF6D800728595 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6B27875E25BFC21ED75236E /* Pods-Recipe Explorer.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -581,6 +584,7 @@
 		};
 		D1B3C7EC229FF6D800728595 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8688D23E341D049DAE5AD10B /* Pods-Recipe Explorer.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

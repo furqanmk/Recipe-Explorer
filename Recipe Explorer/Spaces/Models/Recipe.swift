@@ -11,43 +11,36 @@ import Contentful
 
 struct Recipe {
     
-    let entry: Entry
+    let title: String?
+    let description: String?
+    let tags: [String]
+    let chefName: String?
+    let imageURL: URL?
+    
+    init(title: String?,
+         description: String?,
+         chefName: String?,
+         imageURL: URL?,
+         tags: [String]) {
+        self.title = title
+        self.description = description
+        self.chefName = chefName
+        self.imageURL = imageURL
+        self.tags = tags
+    }
     
     init(with entry: Entry) {
-        self.entry = entry
-    }
-    
-    var title: String? {
-        return entry.fields["title"] as? String
-    }
-    
-    var description: String? {
-        return entry.fields["description"] as? String
-    }
-    
-    var calories: Int? {
-        return entry.fields["calories"] as? Int
-    }
-    
-    var tags: [String] {
-        guard let tags = entry.fields.linkedEntries(at: "tags") else {
-            return []
+        let title = entry.fields["title"] as? String
+        let description = entry.fields["description"] as? String
+        let chefName = entry.fields.linkedEntry(at: "chef")?.fields["name"] as? String
+        let imageURL = entry.fields.linkedAsset(at: "photo")?.url
+        let tags: [String]
+        if let tagEntries = entry.fields.linkedEntries(at: "tags") {
+            tags = tagEntries.compactMap { $0.fields["name"] as? String }
+        } else {
+            tags = []
         }
-        return tags.compactMap { $0.fields["name"] as? String }
+        self.init(title: title, description: description, chefName: chefName, imageURL: imageURL, tags: tags)
     }
-
-    var chefName: String? {
-        guard let chef = entry.fields.linkedEntry(at: "chef") else {
-            return nil
-        }
-        return chef.fields["name"] as? String
-    }
-
-    var imageURL: URL? {
-        guard let image = entry.fields.linkedAsset(at: "photo") else {
-            return nil
-        }
-        return image.url
-    }
-
+    
 }
