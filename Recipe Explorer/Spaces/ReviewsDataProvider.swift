@@ -9,23 +9,17 @@
 import Foundation
 import Contentful
 
-enum FetchError: Error {
-    case invalidUrl
-    case noData
-    case parsingFailed
-}
-
-final class RecipeDataProvider {
+class RecipeDataProvider {
     
-    enum RecipeResult {
+    enum Response {
         case sucess([Recipe])
         case failure(Error)
     }
     
     /// Requests recipes.
     ///
-    /// - Parameter onComplete: call back with a list of reviews.
-    static func fetchRecipes(onComplete: @escaping (RecipeResult)->Void) {
+    /// - Parameter onComplete: call back with a response that either contains a list of recipes or an error.
+    class func fetchRecipes(onComplete: @escaping (Response)->Void) {
 
         let contentType = "recipe"
         let client = Client(spaceId: Configuration.contentfulSpaceId(),

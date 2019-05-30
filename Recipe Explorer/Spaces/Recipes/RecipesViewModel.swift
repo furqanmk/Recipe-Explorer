@@ -25,6 +25,7 @@ final class RecipesViewModel {
     
     var uiDelegate: RecipesViewUIDelegate?
     var recipes: [Recipe] = []
+    private let dataProvider: RecipeDataProvider.Type
     private let onRecipeSelected: (Recipe)->Void
     
     // - MARK: Initializers
@@ -32,7 +33,9 @@ final class RecipesViewModel {
     /// Initializes view model for RecipesViewController.
     ///
     /// - Parameter onRecipeSelected: Call back to be triggered when a Recipe is selected.
-    init(onRecipeSelected: @escaping (Recipe)->Void) {
+    init(dataProvider: RecipeDataProvider.Type = RecipeDataProvider.self,
+         onRecipeSelected: @escaping (Recipe)->Void) {
+        self.dataProvider = dataProvider
         self.onRecipeSelected = onRecipeSelected
     }
     
@@ -59,7 +62,7 @@ final class RecipesViewModel {
     /// - Parameter page: Value of RequestPage. Enables pagination.
     private func fetchRecipes() {
         uiDelegate?.updated(state: .fetching)
-        RecipeDataProvider.fetchRecipes() { [weak self] result in
+        dataProvider.fetchRecipes() { [weak self] result in
             let state: ViewState
             switch result {
             case .sucess(let recipes):
