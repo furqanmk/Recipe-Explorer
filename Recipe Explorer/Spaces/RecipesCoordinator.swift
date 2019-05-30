@@ -6,9 +6,9 @@
 //  Copyright © 2019 Furqan. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-final class ReviewsCoordinator {
+final class RecipesCoordinator {
     
     // - MARK: Properties
     
@@ -16,7 +16,7 @@ final class ReviewsCoordinator {
     
     // - MARK: Initializers
     
-    /// Initializer for reviews flow coordinator
+    /// Initializer for recipes flow coordinator
     ///
     /// - Parameters:
     ///   - navigationController: navigation Controller
@@ -30,28 +30,28 @@ final class ReviewsCoordinator {
     ///
     /// - Returns: start view controller
     func start() -> UIViewController {
-        return configuredReviewsViewController()
+        return configuredRecipesViewController()
     }
     
     // - MARK: Private methods
     
-    /// Creates a configured instance of ReviewsViewController.
+    /// Creates a configured instance of RecipesViewController.
     ///
-    /// - Returns: Instance of ReviewsViewController
-    private func configuredReviewsViewController() -> ReviewsViewController {
-        let viewModel = ReviewsViewModel(onReviewSelected: { review in
-            self.showReviewDetails(for: review)
+    /// - Returns: Instance of RecipesViewController
+    private func configuredRecipesViewController() -> RecipesViewController {
+        let viewModel = RecipesViewModel(onRecipeSelected: { recipe in
+            self.showRecipeDetails(for: recipe)
         })
-        return ReviewsViewController(with: viewModel)
+        return RecipesViewController(with: viewModel)
     }
     
-    /// Creates a configured instance of ReviewDetailsViewController
+    /// Creates a configured instance of RecipeDetailsViewController
     /// and pushes it to the navigation controller.
     ///
-    /// - Parameter review: Instance of review to configure the view controller with
-    private func showReviewDetails(for review: Review) {
-        let viewModel = ReviewDetailsViewModel(with: review)
-        let viewController = ReviewDetailsViewController(viewModel: viewModel)
+    /// - Parameter recipe: Instance of recipe to configure the view controller with
+    private func showRecipeDetails(for recipe: Recipe) {
+        let viewModel = RecipeDetailsViewModel(with: recipe)
+        let viewController = RecipeDetailsViewController(viewModel: viewModel)
         navigationController.pushViewController(viewController, animated: true)
     }
     

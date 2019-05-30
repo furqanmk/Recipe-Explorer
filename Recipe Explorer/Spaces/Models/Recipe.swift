@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+struct Recipe: Decodable {
+    let title: String
+    let description: String
+    let tags: [String]
+    let imageUrl: String?
+    let chefName: String?
+}
