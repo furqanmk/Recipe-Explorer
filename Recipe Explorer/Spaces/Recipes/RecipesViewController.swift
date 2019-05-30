@@ -60,13 +60,6 @@ class RecipesViewController: UITableViewController {
         viewModel.didSelectRecipe(at: indexPath.row)
     }
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // Detects when user scrolls to the bottom of the table view
-        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.frame.size.height) {
-            viewModel.didReachPageEnd()
-        }
-    }
-    
     // MARK: - Helpers
     
     private func showAlert(error: Error) {

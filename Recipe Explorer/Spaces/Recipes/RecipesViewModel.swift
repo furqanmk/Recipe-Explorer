@@ -41,13 +41,7 @@ final class RecipesViewModel {
     /// To inform view model that view has loaded.
     /// View model fetches the first page of Recipes.
     func viewDidLoad() {
-        fetchRecipes(for: .first)
-    }
-    
-    /// To inform view model that list has been scrolled to the bottom.
-    /// View model fetches the next page of Recipes.
-    func didReachPageEnd() {
-        fetchRecipes(for: .next)
+        fetchRecipes()
     }
     
     /// To inform the view model that a Recipe was tapped.
@@ -63,9 +57,9 @@ final class RecipesViewModel {
     /// Sends request to fetch Recipes from the backend.
     ///
     /// - Parameter page: Value of RequestPage. Enables pagination.
-    private func fetchRecipes(for page: RequestPage) {
+    private func fetchRecipes() {
         uiDelegate?.updated(state: .fetching)
-        RecipeDataProvider.fetchRecipes(for: page) { [weak self] result in
+        RecipeDataProvider.fetchRecipes() { [weak self] result in
             let state: ViewState
             switch result {
             case .sucess(let recipes):
