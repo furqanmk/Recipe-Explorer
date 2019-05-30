@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import Down
 
 class RecipeDetailsViewController: UIViewController {
     
@@ -42,9 +43,16 @@ class RecipeDetailsViewController: UIViewController {
         title = "Recipe Details"
         
         titleLabel.text = viewModel.title
-        descriptionLabel.text = viewModel.description
         chefNameLabel.text = viewModel.chefName
         tagsLabel.text = viewModel.tags.joined(separator: ", ")
+        
+        if
+            let description = viewModel.description,
+            let markDown = try? Down(markdownString: description).toAttributedString() {
+            descriptionLabel.attributedText = markDown
+        } else {
+            descriptionLabel.text = viewModel.description
+        }
         
         recipeImageView.sd_setImage(with: viewModel.imageUrl, placeholderImage: #imageLiteral(resourceName: "food_placeholder"))
     }
