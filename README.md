@@ -21,4 +21,4 @@ The app uses the MVVM-C architecture. The coordinator creates an instance of the
 	- Used to parse content provided in the mark down format.
   
 3. SDWebImage
-  - Used to asynchronously fetch profile images.
+  	- Used to asynchronously fetch profile images.
